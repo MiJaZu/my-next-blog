@@ -5,7 +5,7 @@ import Layout, { siteTitle } from '../components/layout';
 import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
 
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsData } from '../lib/porfolio';
 
 
 export async function getStaticProps() {
@@ -29,13 +29,18 @@ like React JS, Typescript, Node JS, I also have experience working with queries 
 learn the necessary technologies to achieve the goals.
 </p>
       </section>
-      <section>
-        <h2>
-          Portfolio
-        </h2>
-        <ul>
-          <li><a href='#blog' >Personal Blog</a> </li>
-          <li><a href='#blog' >Weather app</a> </li>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Portfolio</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/portfolios/${id}`}>{title}</Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
         </ul>
       </section>
       <section>
@@ -45,20 +50,6 @@ learn the necessary technologies to achieve the goals.
         <ul>
           <li><a href="https://github.com/MiJaZu" >Github</a></li>
           <li><a href="https://gitlab.com/MiJaZu" >Gitlab</a></li>          
-        </ul>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
         </ul>
       </section>
     </Layout>
