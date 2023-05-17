@@ -15,7 +15,7 @@ Created My Personal Blog using Next JS to learn the library
 ---
 ### Page
 You can see the result of the page in the following link
-[Site Page](https://github.com/MiJaZu/my-next-blog)
+[Site Page](https://my-next-blog-mijazu.vercel.app/)
 
 ### Github
 You can find the code of My next blog in the following link

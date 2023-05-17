@@ -1,13 +1,14 @@
-import Head from 'next/head';
-import { getAllPostIds, getPostData } from '../../lib/porfolio';
+import Head from "next/head";
+import { getAllPostIds, getPostData } from "../../lib/porfolio";
 
-import Layout from '../../components/layout';
-import Date from '../../components/date';
+import Layout from "../../components/layout";
+import Date from "../../components/date";
 
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from "../../styles/utils.module.css";
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
+  console.log(params);
   return {
     props: {
       postData,

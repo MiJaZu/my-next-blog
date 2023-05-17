@@ -1,12 +1,11 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
 
-import Layout, { siteTitle } from '../components/layout';
-import Date from '../components/date';
-import utilStyles from '../styles/utils.module.css';
+import Layout, { siteTitle } from "../components/layout";
+import Date from "../components/date";
+import utilStyles from "../styles/utils.module.css";
 
-import { getSortedPostsData } from '../lib/porfolio';
-
+import { getSortedPostsData } from "../lib/porfolio";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -17,17 +16,20 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({allPostsData}) {
+export default function Home({ allPostsData }) {
   return (
     <Layout id="blog" home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Full stack developer with 3 years of experience. Looking for great opportunities to grow professionally in trending technologies
-like React JS, Typescript, Node JS, I also have experience working with queries in SQL. I consider myself a developer who will
-learn the necessary technologies to achieve the goals.
-</p>
+        <p>
+          Full stack developer with 3 years of experience. Looking for great
+          opportunities to grow professionally in trending technologies like
+          React JS, Typescript, Node JS, I also have experience working with
+          queries in SQL. I consider myself a developer who will learn the
+          necessary technologies to achieve the goals.
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Portfolio</h2>
@@ -44,12 +46,14 @@ learn the necessary technologies to achieve the goals.
         </ul>
       </section>
       <section>
-        <h2>
-          Repositories
-        </h2>
+        <h2>Repositories</h2>
         <ul>
-          <li><a href="https://github.com/MiJaZu" >Github</a></li>
-          <li><a href="https://gitlab.com/MiJaZu" >Gitlab</a></li>          
+          <li>
+            <a href="https://github.com/MiJaZu">Github</a>
+          </li>
+          <li>
+            <a href="https://gitlab.com/MiJaZu">Gitlab</a>
+          </li>
         </ul>
       </section>
     </Layout>
