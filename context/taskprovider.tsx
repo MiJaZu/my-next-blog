@@ -1,21 +1,23 @@
 import { Task } from "@/models/task";
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface DataProvider {
   tasks: Task[];
+  createTask(task: Task): void;
+  editTask(task: Task): void;
 }
 
 type TaskProviderProps = {
   children: ReactNode;
 };
 
-const TaskContext = createContext<DataProvider | null>({
-  tasks: [
-    { id: "1", title: "My first task", description: "tasks full empty" },
-    { id: "2", title: "My second task", description: "tasks full empty" },
-    { id: "3", title: "My third task", description: "tasks full empty" },
-  ],
-});
+const TaskContext = createContext<DataProvider | null>(null);
 
 export function useData(): DataProvider {
   const context = useContext(TaskContext);
@@ -26,7 +28,20 @@ export function useData(): DataProvider {
 
 export default function TaskProvider({ children }: TaskProviderProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
+
+  const createTask = (task: Task) => {
+    setTasks([...tasks, task]);
+  };
+
+  const editTask = (updatedTask: Task) => {
+    setTasks(
+      tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+    );
+  };
+
   return (
-    <TaskContext.Provider value={{ tasks }}>{children}</TaskContext.Provider>
+    <TaskContext.Provider value={{ tasks, createTask, editTask }}>
+      {children}
+    </TaskContext.Provider>
   );
 }
