@@ -1,17 +1,22 @@
 import { Task } from "@/models/task";
-import { useRouter } from "next/navigation";
+
 type TaskCardProps = {
   task: Task;
+  deleteTask(task: Task);
+  editTask(task: Task);
 };
 
-export default function TaskCard({ task }: TaskCardProps) {
-  const router = useRouter();
+export default function TaskCard({
+  task,
+  editTask,
+  deleteTask,
+}: TaskCardProps) {
   return (
     <div>
       <h2>{task.title}</h2>
       <p>{task.description}</p>
-      <button>Delete</button>
-      <button onClick={() => router.push(`/todo/edit/${task.id}`)}>Edit</button>
+      <button onClick={() => deleteTask(task)}>Delete</button>
+      <button onClick={() => editTask(task)}>Edit</button>
     </div>
   );
 }
