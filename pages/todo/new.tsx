@@ -4,6 +4,7 @@ import { useRouter as useRouterNav } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
+import TodoNavBar from "@/components/todonavbar";
 
 export default function NewTask() {
   const { query } = useRouterRoutes();
@@ -36,20 +37,23 @@ export default function NewTask() {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        placeholder="nombre de la tarea"
-        {...register("title", { required: true })}
-      ></input>
-      {errors.title && <span>Este campo es requerido</span>}
+    <>
+      <TodoNavBar></TodoNavBar>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          placeholder="nombre de la tarea"
+          {...register("title", { required: true })}
+        ></input>
+        {errors.title && <span>Este campo es requerido</span>}
 
-      <textarea
-        placeholder="agregar descripcion"
-        cols={30}
-        rows={10}
-        {...register("description")}
-      ></textarea>
-      <button type="submit">Guardar Tarea</button>
-    </form>
+        <textarea
+          placeholder="agregar descripcion"
+          cols={30}
+          rows={10}
+          {...register("description")}
+        ></textarea>
+        <button type="submit">Guardar Tarea</button>
+      </form>
+    </>
   );
 }
