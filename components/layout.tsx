@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
-import TaskProvider from "@/context/taskprovider";
 
 const name = "Misael Zurita";
 export const siteTitle = "Next.js Sample Website";
@@ -16,7 +15,7 @@ type LayoutProps = {
 
 export default function Layout({ children, home = false }: LayoutProps) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}`}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta

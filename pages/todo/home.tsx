@@ -18,16 +18,18 @@ export default function TodoHome() {
   };
 
   return (
-    <div>
+    <div className="h-screen bg-gray-100">
       <TodoNavBar></TodoNavBar>
-      {tasks.map((task) => (
-        <TaskCard
-          key={`task-id-${task.id}`}
-          task={task}
-          deleteTask={deleteTaskCard}
-          editTask={editTask}
-        ></TaskCard>
-      ))}
+      <div className="flex justify-center">
+        {tasks.map((task) => (
+          <TaskCard
+            key={`task-id-${task.id}`}
+            task={task}
+            deleteTask={deleteTaskCard}
+            editTask={editTask}
+          ></TaskCard>
+        ))}
+      </div>
     </div>
   );
 }
