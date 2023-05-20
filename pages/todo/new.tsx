@@ -37,10 +37,12 @@ export default function NewTask() {
   });
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <TodoNavBar></TodoNavBar>
       <section className="flex flex-col justify-center items-center text-white bg-gray-700 self-center mt-10 p-3">
-        <h1 className="text-2xl font-extrabold dark:text-white">Nueva Tarea</h1>
+        <h1 className="text-2xl font-extrabold dark:text-white">
+          {query.id ? "Editar Tarea" : "Nueva Tarea"}
+        </h1>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
           <input
             className="m-1 p-2 bg-gray-500"
@@ -48,7 +50,7 @@ export default function NewTask() {
             {...register("title", { required: true })}
           ></input>
           {errors.title && (
-            <span className="text-red-400">el titulo es requerido</span>
+            <span className="text-red-400 p-1">el titulo es requerido</span>
           )}
 
           <textarea

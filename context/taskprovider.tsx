@@ -54,7 +54,7 @@ export default function TaskProvider({ children }: TaskProviderProps) {
     <TaskContext.Provider value={{ tasks, createTask, editTask, deleteTask }}>
       {children}
       <ToastContainer
-        position="top-right"
+        position="top-left"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

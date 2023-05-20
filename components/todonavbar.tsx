@@ -1,28 +1,29 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-
-import styles from "./todonavbar.module.css";
+import React from "react";
 
 export default function TodoNavBar() {
-  const router = useRouter();
-
   return (
-    <nav className="flex justify-around items-center h-20 bg-slate-600 text-white">
-      <h1 className={`font-serif text-4xl p-2 w-30 m-1 hover:animate-bounce`}>
+    <nav className="flex items-center justify-between flex-wrap bg-sky-600 p-6">
+      <div className="flex items-center flex-shrink-0 mr-6">
         <Link
-          className="no-underline hover:no-underline focus:no-underline text-blue-200"
+          className="text-white no-underline focus:no-underline hover:no-underline hover:animate-bounce"
           href={"/todo/home"}
         >
-          Todo al Día
+          <span className="font-semibold text-xl tracking-tight">
+            Todo al Día
+          </span>
         </Link>
-      </h1>
-      <h1></h1>
-      <button
-        className="hover:bg-blue-600 bg-blue-400 p-2 w-30 m-1"
-        onClick={() => router.push("/todo/new")}
-      >
-        Agregar tarea
-      </button>
+      </div>
+      <div className="block">
+        <div className="text-sm lg:flex-grow">
+          <Link
+            href="/todo/new"
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
+            Agregar tarea
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }

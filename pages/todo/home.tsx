@@ -18,9 +18,9 @@ export default function TodoHome() {
   };
 
   return (
-    <div className="h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
       <TodoNavBar></TodoNavBar>
-      <div className="flex justify-center">
+      <div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-flow-row ">
         {tasks.map((task) => (
           <TaskCard
             key={`task-id-${task.id}`}
